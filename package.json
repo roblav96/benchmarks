@@ -1,0 +1,41 @@
+{
+	"name": "benchmarks",
+	"version": "0.0.1",
+	"scripts": {
+		"r": "rimraf dist && tsc-watch --onSuccess 'pandora dev dist'",
+		"purge": "rimraf dist node_modules"
+	},
+	"dependencies": {
+		"eventemitter3": "latest",
+		"got": "latest",
+		"ioredis": "latest",
+		"lodash": "latest",
+		"luxon": "latest",
+		"msgpack5": "latest",
+		"polka": "latest",
+		"sockette": "latest",
+		"turbo-http": "latest",
+		"turbo-net": "latest",
+		"uws": "latest"
+	},
+	"devDependencies": {
+		"@types/got": "latest",
+		"@types/ioredis": "latest",
+		"@types/lodash": "latest",
+		"@types/luxon": "latest",
+		"@types/msgpack5": "latest",
+		"@types/node": "latest",
+		"@types/source-map-support": "latest",
+		"@types/uws": "latest",
+		"chalk": "latest",
+		"cli-color": "latest",
+		"fastbench": "latest",
+		"nanobench": "latest",
+		"npm-run-all": "latest",
+		"pandora": "latest",
+		"rimraf": "latest",
+		"source-map-support": "latest",
+		"tsc-watch": "1.0.18",
+		"typescript": "latest"
+	}
+}

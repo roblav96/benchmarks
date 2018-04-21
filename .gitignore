@@ -1,0 +1,15 @@
+# 
+
+node_modules
+dist
+
+procfile.js
+*.env
+*.env.*
+*.local
+*.debug
+*.idea
+*.heapsnapshot
+
+*.log
+*.DS_STORE
