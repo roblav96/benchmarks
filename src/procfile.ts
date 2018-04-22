@@ -1,19 +1,31 @@
 // 
 
 import './console'
-import * as os from 'os'
-import { ProcfileReconcilerAccessor } from 'pandora'
 import { ProcessContextAccessor } from 'pandora/dist/application/ProcessContextAccessor'
+import { ProcfileReconcilerAccessor } from 'pandora'
+import * as os from 'os'
 
 
 
 export = function(pandora: ProcfileReconcilerAccessor) {
 	const cpus = os.cpus().length
+	
+	// pandora.process('api').nodeArgs(['-r', 'ts-node/register', '--trace-warnings'])
 
-	pandora.fork('benchmarks', './main.js').env({
+	pandora.process('api').env({
 		NODE_ENV: 'development',
 		PORT: 12300,
-	})
+	}).nodeArgs(['--no-warnings']).scale(1)
+
+	pandora.service('api', './api/api.js').process('api').config({
+		env: 'development',
+		port: 12300,
+	}).publish()
+
+	// pandora.fork('benchmarks', './main.js').env({
+	// 	NODE_ENV: 'development',
+	// 	PORT: 12300,
+	// }).nodeArgs(['--no-warnings'])
 
 
 

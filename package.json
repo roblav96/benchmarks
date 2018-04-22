@@ -2,16 +2,20 @@
 	"name": "benchmarks",
 	"version": "0.0.1",
 	"scripts": {
-		"r": "rimraf dist && tsc-watch --onSuccess 'pandora dev dist'",
+		"r": "run-p watch change",
+		"change": "onchange 'dist/**/*.js' -- pandora dev dist",
+		"watch": "tsc -w",
 		"purge": "rimraf dist node_modules"
 	},
 	"dependencies": {
 		"eventemitter3": "latest",
+		"fastest-validator": "latest",
 		"got": "latest",
 		"ioredis": "latest",
 		"lodash": "latest",
 		"luxon": "latest",
 		"msgpack5": "latest",
+		"nanomsg": "latest",
 		"polka": "latest",
 		"sockette": "latest",
 		"turbo-http": "latest",
@@ -24,18 +28,19 @@
 		"@types/lodash": "latest",
 		"@types/luxon": "latest",
 		"@types/msgpack5": "latest",
+		"@types/nanomsg": "latest",
 		"@types/node": "latest",
-		"@types/source-map-support": "latest",
 		"@types/uws": "latest",
 		"chalk": "latest",
 		"cli-color": "latest",
 		"fastbench": "latest",
 		"nanobench": "latest",
 		"npm-run-all": "latest",
+		"onchange": "latest",
 		"pandora": "latest",
 		"rimraf": "latest",
 		"source-map-support": "latest",
-		"tsc-watch": "1.0.18",
+		"ts-node": "latest",
 		"typescript": "latest"
 	}
 }
