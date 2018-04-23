@@ -2,8 +2,8 @@
 	"name": "benchmarks",
 	"version": "0.0.1",
 	"scripts": {
-		"r": "run-p watch change",
-		"change": "onchange 'dist/**/*.js' -- pandora dev dist",
+		"r": "rimraf dist && run-p watch change",
+		"change": "onchange 'dist/**/*.js' --delay 300 -- pandora dev dist",
 		"watch": "tsc -w",
 		"purge": "rimraf dist node_modules"
 	},
@@ -16,10 +16,11 @@
 		"luxon": "latest",
 		"msgpack5": "latest",
 		"nanomsg": "latest",
+		"pbf": "^3.1.0",
 		"polka": "latest",
+		"protobufjs": "^6.8.6",
 		"sockette": "latest",
 		"turbo-http": "latest",
-		"turbo-net": "latest",
 		"uws": "latest"
 	},
 	"devDependencies": {
@@ -30,17 +31,21 @@
 		"@types/msgpack5": "latest",
 		"@types/nanomsg": "latest",
 		"@types/node": "latest",
+		"@types/pbf": "^3.0.0",
+		"@types/source-map-support": "latest",
 		"@types/uws": "latest",
 		"chalk": "latest",
 		"cli-color": "latest",
+		"debug-trace": "latest",
 		"fastbench": "latest",
 		"nanobench": "latest",
 		"npm-run-all": "latest",
 		"onchange": "latest",
 		"pandora": "latest",
+		"pandora-dashboard": "latest",
 		"rimraf": "latest",
 		"source-map-support": "latest",
-		"ts-node": "latest",
+		"stacktracey": "latest",
 		"typescript": "latest"
 	}
 }

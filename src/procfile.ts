@@ -1,35 +1,50 @@
 // 
 
-import './console'
+import './main'
 import { ProcessContextAccessor } from 'pandora/dist/application/ProcessContextAccessor'
-import { ProcfileReconcilerAccessor } from 'pandora'
+import { ProcfileReconcilerAccessor, DefaultEnvironment } from 'pandora'
 import * as os from 'os'
 
 
 
-export = function(pandora: ProcfileReconcilerAccessor) {
-	const cpus = os.cpus().length
-	
-	// pandora.process('api').nodeArgs(['-r', 'ts-node/register', '--trace-warnings'])
+export = async function(pandora: ProcfileReconcilerAccessor) {
 
-	pandora.process('api').env({
-		NODE_ENV: 'development',
+	pandora.process('uws').env({
 		PORT: 12300,
-	}).nodeArgs(['--no-warnings']).scale(1)
+	}).scale(1).nodeArgs(['--no-warnings'])
+	pandora.service('uws', './uws/uws.js').process('uws').config({
+	}).publish(true)
 
-	pandora.service('api', './api/api.js').process('api').config({
-		env: 'development',
-		port: 12300,
-	}).publish()
+
+
+	// pandora.process('radio').env({
+	// 	PORT: 12299,
+	// }).scale(1).order(1).nodeArgs(['--no-warnings'])
+	// pandora.service('radio', './radio/radio.js').process('radio').config({
+	// }).publish(true)
+
+	// pandora.process('api').env({
+	// 	PORT: 12300,
+	// }).scale(1).order(2).nodeArgs(['--no-warnings'])
+	// pandora.service('api', './api/api').process('api').config({
+	// }).publish(true)
+
+	// pandora.service('logger').drop()
 
 	// pandora.fork('benchmarks', './main.js').env({
 	// 	NODE_ENV: 'development',
 	// 	PORT: 12300,
 	// }).nodeArgs(['--no-warnings'])
 
-
+	// pandora.process('dashboard').scale(1)
+	// pandora.service('dashboard', '../node_modules/pandora-dashboard/dist/Dashboard').process('dashboard')
 
 }
+
+
+
+import * as clc from 'cli-color'
+if (DEVELOPMENT) setInterval(() => process.stdout.write(clc.erase.lineRight), 1000);
 
 
 
