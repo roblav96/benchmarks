@@ -9,9 +9,11 @@ import * as os from 'os'
 
 export = async function(pandora: ProcfileReconcilerAccessor) {
 
+	console.log('process.env.NODE_ENV ->', process.env.NODE_ENV)
+
 	pandora.process('uws').env({
 		PORT: 12300,
-	}).scale(1).nodeArgs(['--no-warnings'])
+	}).scale(4).nodeArgs(['--no-warnings'])
 	pandora.service('uws', './uws/uws.js').process('uws').config({
 	}).publish(true)
 
